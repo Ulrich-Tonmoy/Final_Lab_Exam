@@ -12,10 +12,36 @@
             <br />
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
-                <td>Id</td>
+                <td>Employer Name</td>
                 <td>:</td>
-                <td><input id="id" name="id" type="text" /></td>
-                <td></td>
+                <td><input id="eName" name="eName" type="text" onkeyup="ename()"/></td>
+                <td id="emsg"></td>
+              </tr>
+              <tr>
+                <td colspan="4"><hr /></td>
+              </tr><tr>
+                <td>Company Name</td>
+                <td>:</td>
+                <td><input id="cName" name="cName" type="text" onkeyup="cname()"/></td>
+                <td id="cmsg"></td>
+              </tr>
+              <tr>
+                <td colspan="4"><hr /></td>
+              </tr>
+              <tr>
+                <td>Contact No</td>
+                <td>:</td>
+                <td><input id="cNo" name="cNo" type="text" onkeyup="cno()"/></td>
+                <td id="nmsg"></td>
+              </tr>
+              <tr>
+                <td colspan="4"><hr /></td>
+              </tr>
+              <tr>
+                <td>User Name</td>
+                <td>:</td>
+                <td><input id="uName" name="uName" type="text" onkeyup="uname()"/></td>
+                <td id="umsg"></td>
               </tr>
               <tr>
                 <td colspan="4"><hr /></td>
@@ -23,8 +49,8 @@
               <tr>
                 <td>Password</td>
                 <td>:</td>
-                <td><input id="password" name="password" type="password" /></td>
-                <td></td>
+                <td><input id="pass" name="pass" type="password" onkeyup="pass()"/></td>
+                <td id="pmsg"></td>
               </tr>
               <tr>
                 <td colspan="4"><hr /></td>
@@ -32,50 +58,89 @@
               <tr>
                 <td>Confirm Password</td>
                 <td>:</td>
-                <td><input id="confirmPassword" name="confirmPassword" type="password" /></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td colspan="4"><hr /></td>
-              </tr>  
-              <tr>
-                <td>Name</td>
-                <td>:</td>
-                <td><input id="name" name="name" type="text" /></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td colspan="4"><hr /></td>
-              </tr>        
-              <tr>
-                <td>Email</td>
-                <td>:</td>
-                <td>
-                  <input id="email" name="email" type="text" />
-                  <abbr title="hint: sample@example.com"><b>i</b></abbr>
-                </td>
-                <td></td>
-              </tr>
-              <tr>
-                <td colspan="4"><hr /></td>
-              </tr>
-              <tr>
-                <td>User Type [User / Admin]</td>
-                <td>:</td>
-                <td>
-                  <select name="userType" id="userType">
-                    <option value="User">User</option>
-                    <option value="Admin">Admin</option>
-                  </select>
-                </td>
+                <td><input id="cpass" name="cpass" type="password" /></td>
+                <td id="cpmsg"></td>
               </tr>
             </table>
             <hr />
             <input name="submit" type="button" value="Submit" onclick="f1()"/>
-            <a href="login.html" style="display: none">Login</a>
             <div id="suc"></div>
           </form>
         </fieldset>
       </form>
+      <script type="text/javascript">
+		function f1() {
+            var eName = document.getElementById('eName').value;
+            var cName = document.getElementById('cName').value;
+            var cNo = document.getElementById('cNo').value;
+            var uName = document.getElementById('uName').value;
+			var pass = document.getElementById('pass').value;
+			var cpass = document.getElementById('cpass').value;
+            var type = "Employer";
+
+
+            if(eName == ""){
+                document.getElementById('emsg').innerHTML = "Employer name Can't left empty!";
+            }
+            if(cName == ""){
+                document.getElementById('cmsg').innerHTML = "Company name Can't left empty!";
+            }
+            if(cNo == ""){
+                document.getElementById('nmsg').innerHTML = "Contact no Can't left empty!";
+            }
+            if(uName == ""){
+                document.getElementById('umsg').innerHTML = "Contact no Can't left empty!";
+            }
+            if(pass == ""){
+                document.getElementById('pmsg').innerHTML = "Contact no Can't left empty!";
+            }
+            if(cpass == ""){
+                document.getElementById('cpmsg').innerHTML = "Contact no Can't left empty!";
+            }
+            else{
+                var xhttp = new XMLHttpRequest();
+                xhttp.open('POST', 'regi.php', true);
+                xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhttp.send("eName=" + eName + "&cName=" + cName + "&cNo=" + cNo + "&uName=" + uName +"&pass=" + pass + "&cpass=" + cpass + "&type=" + type);
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById('suc').innerHTML = this.responseText;
+
+                    }
+			}
+            }
+		}
+
+        var ename = function(){
+            var eName = document.getElementById('eName').value;
+            if(eName != ''){
+                document.getElementById('emsg').innerHTML = "";
+            }
+        }
+        var cname = function(){
+            var cName = document.getElementById('cName').value;
+            if(cName != ''){
+                document.getElementById('cmsg').innerHTML = "";
+            }
+        }
+        var cno = function(){
+            var cNo = document.getElementById('cNo').value;
+            if(cNo != ''){
+                document.getElementById('nmsg').innerHTML = "";
+            }
+        }
+        var uname = function(){
+            var uName = document.getElementById('uName').value;
+            if(uName != ''){
+                document.getElementById('umsg').innerHTML = "";
+            }
+        }
+        var pass = function(){
+            var pass = document.getElementById('pass').value;
+            if(pass != ''){
+                document.getElementById('pmsg').innerHTML = "";
+            }
+        }
+	</script>
 </body>
 </html>
