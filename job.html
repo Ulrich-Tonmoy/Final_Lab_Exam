@@ -1,0 +1,116 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<body>
+    <form action="job.php" method="POST">
+        <fieldset >
+          <legend ><b></b>REGISTRATION</b></legend>
+          <form>
+            <br />
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td>Company Name</td>
+                <td>:</td>
+                <td><input id="cName" name="cName" type="text" onkeyup="cname()"/></td>
+                <td id="cmsg"></td>
+              </tr>
+              <tr>
+                <td colspan="4"><hr /></td>
+              </tr>
+              <tr>
+                <td>Job Title</td>
+                <td>:</td>
+                <td><input id="jt" name="jt" type="text" onkeyup="jt1()"/></td>
+                <td id="jmsg"></td>
+              </tr>
+              <tr>
+                <td colspan="4"><hr /></td>
+              </tr>
+              <tr>
+                <td>Job Location</td>
+                <td>:</td>
+                <td><input id="jl" name="uName" type="text" onkeyup="jl1()"/></td>
+                <td id="jlmsg"></td>
+              </tr>
+              <tr>
+                <td colspan="4"><hr /></td>
+              </tr>
+              <tr>
+                <td>Salary</td>
+                <td>:</td>
+                <td><input id="sal" name="pass" type="number" onkeyup="sal1()"/></td>
+                <td id="smsg"></td>
+              </tr>
+            </table>
+            <hr />
+            <input name="submit" type="button" value="Submit" onclick="f1()"/>
+            <div id="suc"></div>
+          </form>
+        </fieldset>
+      </form>
+      <script type="text/javascript">
+		function f1() {
+            var cName = document.getElementById('cName').value;
+            var jl = document.getElementById('jl').value;
+            var jt = document.getElementById('jt').value;
+			var sal = document.getElementById('sal').value;
+
+
+            
+            if(cName == ""){
+                document.getElementById('cmsg').innerHTML = "Company name Can't left empty!";
+            }
+            if(jt == ""){
+                document.getElementById('jmsg').innerHTML = "Contact no Can't left empty!";
+            }
+            if(jl == ""){
+                document.getElementById('jlmsg').innerHTML = "Contact no Can't left empty!";
+            }
+            if(sal == ""){
+                document.getElementById('smsg').innerHTML = "Contact no Can't left empty!";
+            }
+            else{
+                var xhttp = new XMLHttpRequest();
+                xhttp.open('POST', 'job.php', true);
+                xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhttp.send("cName=" + cName + "&jl=" + jl + "&jt=" + jt +"&sal=" + sal);
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById('suc').innerHTML = this.responseText;
+
+                    }
+			}
+            }
+		}
+
+        
+        var cname = function(){
+            var cName = document.getElementById('cName').value;
+            if(cName != ''){
+                document.getElementById('cmsg').innerHTML = "";
+            }
+        }
+        var jt1 = function(){
+            var jt = document.getElementById('jt').value;
+            if(jt != ''){
+                document.getElementById('jmsg').innerHTML = "";
+            }
+        }
+        var jl1 = function(){
+            var jl = document.getElementById('jl').value;
+            if(jl != ''){
+                document.getElementById('jlmsg').innerHTML = "";
+            }
+        }
+        var sal1 = function(){
+            var sal = document.getElementById('sal').value;
+            if(sal != ''){
+                document.getElementById('smsg').innerHTML = "";
+            }
+        }
+	</script>
+</body>
+</html>
