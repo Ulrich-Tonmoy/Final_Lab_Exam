@@ -1,0 +1,81 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+</head>
+<body>
+    <form action="regi.php" method="POST">
+        <fieldset >
+          <legend ><b></b>REGISTRATION</b></legend>
+          <form>
+            <br />
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td>Id</td>
+                <td>:</td>
+                <td><input id="id" name="id" type="text" /></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="4"><hr /></td>
+              </tr>
+              <tr>
+                <td>Password</td>
+                <td>:</td>
+                <td><input id="password" name="password" type="password" /></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="4"><hr /></td>
+              </tr>
+              <tr>
+                <td>Confirm Password</td>
+                <td>:</td>
+                <td><input id="confirmPassword" name="confirmPassword" type="password" /></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="4"><hr /></td>
+              </tr>  
+              <tr>
+                <td>Name</td>
+                <td>:</td>
+                <td><input id="name" name="name" type="text" /></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="4"><hr /></td>
+              </tr>        
+              <tr>
+                <td>Email</td>
+                <td>:</td>
+                <td>
+                  <input id="email" name="email" type="text" />
+                  <abbr title="hint: sample@example.com"><b>i</b></abbr>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="4"><hr /></td>
+              </tr>
+              <tr>
+                <td>User Type [User / Admin]</td>
+                <td>:</td>
+                <td>
+                  <select name="userType" id="userType">
+                    <option value="User">User</option>
+                    <option value="Admin">Admin</option>
+                  </select>
+                </td>
+              </tr>
+            </table>
+            <hr />
+            <input name="submit" type="button" value="Submit" onclick="f1()"/>
+            <a href="login.html" style="display: none">Login</a>
+            <div id="suc"></div>
+          </form>
+        </fieldset>
+      </form>
+</body>
+</html>
