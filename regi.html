@@ -49,7 +49,7 @@
               <tr>
                 <td>Password</td>
                 <td>:</td>
-                <td><input id="pass" name="pass" type="password" onkeyup="pass()"/></td>
+                <td><input id="pass" name="pass" type="password" onkeyup="pass1()"/></td>
                 <td id="pmsg"></td>
               </tr>
               <tr>
@@ -58,7 +58,7 @@
               <tr>
                 <td>Confirm Password</td>
                 <td>:</td>
-                <td><input id="cpass" name="cpass" type="password" /></td>
+                <td><input id="cpass" name="cpass" type="password" onkeyup="pass2()"/></td>
                 <td id="cpmsg"></td>
               </tr>
             </table>
@@ -135,10 +135,16 @@
                 document.getElementById('umsg').innerHTML = "";
             }
         }
-        var pass = function(){
+        var pass1 = function(){
             var pass = document.getElementById('pass').value;
             if(pass != ''){
                 document.getElementById('pmsg').innerHTML = "";
+            }
+        }
+        var pass2 = function(){
+            var cpass = document.getElementById('cpass').value;
+            if(cpass != ''){
+                document.getElementById('cpmsg').innerHTML = "";
             }
         }
 	</script>
